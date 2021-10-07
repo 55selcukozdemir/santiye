@@ -14,13 +14,13 @@
     <fragment
         android:id="@+id/navigation_product_arrangement"
         android:name="com.example.santiye.warehome.ProductArrangementFragment"
-        android:label="@string/title_request"
+        android:label="@string/title_product_arrangement"
         tools:layout="@layout/fragment_product_arrangemet" />
 
     <fragment
         android:id="@+id/navigation_products"
         android:name="com.example.santiye.warehome.ProductFragment"
-        android:label="@string/title_request"
+        android:label="@string/title_products"
         tools:layout="@layout/fragment_products" />
 
 </navigation>
