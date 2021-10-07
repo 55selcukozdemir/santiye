@@ -59,4 +59,10 @@
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/login_giriş"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Giriş" />
 </LinearLayout>
