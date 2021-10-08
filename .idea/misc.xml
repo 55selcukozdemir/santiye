@@ -8,12 +8,20 @@
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/activity_operator.xml" value="0.13451086956521738" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/activity_warehome.xml" value="0.4" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_home.xml" value="0.253125" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_main_equipment.xml" value="0.1" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_main_home.xml" value="0.25181159420289856" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_main_meterial.xml" value="0.264" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_notifications.xml" value="0.13451086956521738" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_product_arrangemet.xml" value="0.12310030395136778" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_products.xml" value="0.12310030395136778" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_request.xml" value="0.264" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_equipment.xml" value="0.1" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_equipment_p.xml" value="0.264" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_home.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_meterial.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_operator.xml" value="0.264" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_warehome_products.xml" value="0.2151268115942029" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_warehome_request.xml" value="0.4" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/main_home_list_item.xml" value="0.47230320699708456" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/menu/bottom_nav_menu.xml" value="0.253125" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/menu/bottom_nav_menu_warehome.xml" value="0.264" />
