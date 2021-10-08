@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">santiye</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Ana Sayfa</string>
+    <string name="title_meterial">Malzeme</string>
+    <string name="title_equipment">Ekipman</string>
+    <string name="title_profile">Profil</string>
 
     <string name="title_request">İstekler</string>
     <string name="title_product_arrangement">Ürün Düzenleme</string>
     <string name="title_products">Ürünler</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

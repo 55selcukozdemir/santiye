@@ -25,7 +25,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Email :"
+            android:text= "Email :"
             android:textSize="20sp" />
 
         <EditText
@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/login_giriş"
+        android:id="@+id/login_giris"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Giriş" />

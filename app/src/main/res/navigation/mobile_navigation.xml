@@ -9,17 +9,24 @@
         android:id="@+id/navigation_home"
         android:name="com.example.santiye.main.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_main_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_equipment"
         android:name="com.example.santiye.main.EquipmentFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_equipment" />
+        android:label="@string/title_equipment"
+        tools:layout="@layout/fragment_main_equipment" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_meterial"
         android:name="com.example.santiye.main.MeterialFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_meterial" />
+        android:label="@string/title_meterial"
+        tools:layout="@layout/fragment_main_meterial" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.santiye.main.Profile"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_main_profile" />
+
 </navigation>

@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.santiye.databinding.FragmentEquipmentBinding
+import com.example.santiye.databinding.FragmentMainEquipmentBinding
 
 class EquipmentFragment : Fragment() {
 
-    private var _binding: FragmentEquipmentBinding? = null
+    private var _binding: FragmentMainEquipmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        _binding = FragmentEquipmentBinding.inflate(inflater, container, false)
+        _binding = FragmentMainEquipmentBinding.inflate(inflater, container, false)
         return binding.root
 
     }
