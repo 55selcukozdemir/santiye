@@ -120,7 +120,7 @@
         android:text="Önceki İsteklerim" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragment_main_equipment_recycler_view"
+        android:id="@+id/fragment_main_meterial_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
