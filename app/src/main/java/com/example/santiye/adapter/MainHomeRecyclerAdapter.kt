@@ -38,7 +38,7 @@ class MainHomeRecyclerAdapter(val contentList: ArrayList<Content>) : RecyclerVie
         fun bindItem(contentModel: Content){
             textViewName.text = contentModel.name
             textViewLocation.text = contentModel.location
-            textViewTicket.text = contentModel.ticket
+            textViewTicket.text = contentModel. ticket
             textViewExplanation.text = contentModel.explanation
             imageViewPerson.setImageResource(contentModel.personImage)
             imageViewContent.setImageResource(contentModel.contentImage)
