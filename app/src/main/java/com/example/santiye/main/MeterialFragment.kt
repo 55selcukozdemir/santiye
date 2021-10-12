@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.santiye.adapter.MainMeterialRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainMeterialBinding
 import com.example.santiye.product.Meterial
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -49,7 +50,8 @@ class MeterialFragment : Fragment() {
             requestMap.put("floor", floor)
             requestMap.put("meteral", meterial)
             requestMap.put("quentity", quentity)
-            requestMap.put("confirmation", "true")
+            requestMap.put("confirmation", "null")
+            requestMap.put("date", Timestamp.now())
 
             firestore.collection("Request").add(requestMap).addOnSuccessListener {
                 Toast.makeText(context, "İstekte bulunuldu!", Toast.LENGTH_LONG).show()
@@ -85,13 +87,14 @@ class MeterialFragment : Fragment() {
                         val doc = value.documents
                         for (d in doc){
                             val confirmation = d.get("confirmation").toString()
-                            if (confirmation != "null"){
+
                                 val block = d.get("block") as String
                                 val floor = d.get("floor") as String
                                 val meterial = d.get("meteral") as String
                                 val quentity = d.get("quentity") as String
-                                contentMeterial.add(Meterial(block,floor,meterial,quentity,confirmation))
-                            }
+                                val id = d.id
+                                contentMeterial.add(Meterial(block,floor,meterial,quentity,confirmation, id))
+
                         }
                         recyclerAdapter.notifyDataSetChanged()
 

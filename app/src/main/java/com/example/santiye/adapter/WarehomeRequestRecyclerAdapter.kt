@@ -1,11 +1,11 @@
 package com.example.santiye.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.santiye.R
 import com.example.santiye.product.RequestL
@@ -30,6 +30,16 @@ class WarehomeRequestRecyclerAdapter (val requestList: ArrayList<RequestL>) : Re
 
     override fun onBindViewHolder(holder: RequestViewHolder, position: Int) {
         holder.bindItem(requestList[position])
+
+        holder.noButton.setOnClickListener(View.OnClickListener {
+            val collection = firestore.collection("Request")
+            collection.document(requestList[position].id).update("confirmation", "true")
+        })
+
+        holder.okButton.setOnClickListener(View.OnClickListener {
+            val  collection = firestore.collection("Request")
+            collection.document(requestList[position].id).update("confirmation", "false")
+        })
     }
 
     override fun getItemCount(): Int {
@@ -47,9 +57,18 @@ class WarehomeRequestRecyclerAdapter (val requestList: ArrayList<RequestL>) : Re
 
         fun bindItem(requestModel: RequestL){
             textBlok.text = requestModel.blok
-            textFloor.text = requestModel.kat
-            textName.text = requestModel.name
-            textQentity.text = requestModel.quantity
+            textFloor.text = requestModel.floor
+            textName.text = requestModel.meterial
+            textQentity.text = requestModel.quentity
+
+            if (requestModel.confirmation == "true"){
+                noButton.isVisible = false
+                okButton.isVisible = false
+
+            }else if (requestModel.confirmation == "false"){
+                noButton.isVisible = false
+                okButton.isVisible = false
+            }
         }
     }
 }

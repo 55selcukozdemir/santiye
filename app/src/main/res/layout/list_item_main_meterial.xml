@@ -9,35 +9,35 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/list_item_warehome_products_meterial"
+            android:id="@+id/list_item_main_products_meterial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="meterial " />
 
         <TextView
-            android:id="@+id/list_item_warehome_products_floor"
+            android:id="@+id/list_item_main_products_floor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="kat" />
 
         <TextView
-            android:id="@+id/list_item_warehome_products_block"
+            android:id="@+id/list_item_main_products_block"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="blok" />
 
         <TextView
-            android:id="@+id/list_item_warehome_products_quentity"
+            android:id="@+id/list_item_main_products_quentity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="miktar" />
 
         <TextView
-            android:id="@+id/list_item_warehome_products_confirmation"
+            android:id="@+id/list_item_main_products_confirmation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

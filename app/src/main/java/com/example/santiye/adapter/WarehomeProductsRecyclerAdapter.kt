@@ -28,12 +28,12 @@ class WarehomeProductsRecyclerAdapter(val productList: ArrayList<WarehomeProduct
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-        val textname = view.findViewById<TextView>(R.id.list_item_warehome_products_meterial)
-        val textquentity = view.findViewById<TextView>(R.id.list_item_warehome_products_floor)
-        val textUnit = view.findViewById<TextView>(R.id.list_item_warehome_products_block)
+        val textname = view.findViewById<TextView>(R.id.list_item_warehome_products_name)
+        val textquentity = view.findViewById<TextView>(R.id.list_item_warehome_products_quantity)
+        val textUnit = view.findViewById<TextView>(R.id.list_item_warehome_products_unit)
 
         fun bintItem(productModel: WarehomeProduct){
-            textUnit.text = productModel.name
+            textname.text = productModel.name
             textUnit.text = productModel.unit
             textquentity.text = productModel.quentity
         }

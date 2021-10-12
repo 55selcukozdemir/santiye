@@ -25,11 +25,11 @@ class MainMeterialRecyclerAdapter(val contentList: ArrayList<Meterial>): Recycle
     }
 
     class MeterialViewHoler(view: View): RecyclerView.ViewHolder(view){
-        val meterial  = view.findViewById<TextView>(R.id.list_item_warehome_products_meterial)
-        val floor = view.findViewById<TextView>(R.id.list_item_warehome_products_floor)
-        val block = view.findViewById<TextView>(R.id.list_item_warehome_products_block)
-        val quentity = view.findViewById<TextView>(R.id.list_item_warehome_products_quentity)
-        val confirmation = view.findViewById<TextView>(R.id.list_item_warehome_products_confirmation)
+        val meterial  = view.findViewById<TextView>(R.id.list_item_main_products_meterial)
+        val floor = view.findViewById<TextView>(R.id.list_item_main_products_floor)
+        val block = view.findViewById<TextView>(R.id.list_item_main_products_block)
+        val quentity = view.findViewById<TextView>(R.id.list_item_main_products_quentity)
+        val confirmation = view.findViewById<TextView>(R.id.list_item_main_products_confirmation)
 
         fun bindItem(contentModel: Meterial){
             meterial.text = contentModel.meterial
