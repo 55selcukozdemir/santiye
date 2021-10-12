@@ -29,13 +29,13 @@
                 android:text="Malzeme:" />
 
             <EditText
-                android:id="@+id/fragment_main_meterial_edittext_meterial"
+                android:id="@+id/meterial_meterial_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="Malzeme"
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
@@ -52,13 +52,13 @@
                 android:text="Miktar:" />
 
             <EditText
-                android:id="@+id/fragment_main_meterial_edittext_quantity"
+                android:id="@+id/meterial_quentity_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="miktar"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,13 +74,13 @@
                 android:text="Blok:" />
 
             <EditText
-                android:id="@+id/fragment_main_meterial_edittext_block"
+                android:id="@+id/meterial_bolck_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="blok"
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,20 +96,20 @@
                 android:text="Kat:" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/meterial_floor_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="kat"
+                android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="İstek" />
         </LinearLayout>
     </LinearLayout>
 

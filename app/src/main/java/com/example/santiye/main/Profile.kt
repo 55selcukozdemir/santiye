@@ -22,12 +22,12 @@ class Profile : Fragment() {
         val recyclerView = binding.fragmentMainProfileRecyclerView
 
         val contentList = ArrayList<Content>()
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
-        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
+//        contentList.add(Content("selçuk", "özdemir", "B-3", "bina temeli atılmaktadır",R.drawable.`in`, R.drawable.`ins`,"dsf"))
 
         recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         val adapter = MainHomeRecyclerAdapter(contentList)

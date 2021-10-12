@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.santiye.R
 import com.example.santiye.adapter.MainHomeRecyclerAdapter.*
 import com.example.santiye.product.Content
+import com.squareup.picasso.Picasso
 
 class MainHomeRecyclerAdapter(val contentList: ArrayList<Content>) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -21,6 +22,7 @@ class MainHomeRecyclerAdapter(val contentList: ArrayList<Content>) : RecyclerVie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(contentList[position])
+        Picasso.get().load(contentList.get(position).contentImage).into(holder.imageViewContent)
     }
 
     override fun getItemCount(): Int {
@@ -41,7 +43,7 @@ class MainHomeRecyclerAdapter(val contentList: ArrayList<Content>) : RecyclerVie
             textViewTicket.text = contentModel. ticket
             textViewExplanation.text = contentModel.explanation
             imageViewPerson.setImageResource(contentModel.personImage)
-            imageViewContent.setImageResource(contentModel.contentImage)
+
         }
 
     }

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "481885805166",
+    "project_id": "building-site-57bcb",
+    "storage_bucket": "building-site-57bcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481885805166:android:056311cd847172a13b247f",
+        "android_client_info": {
+          "package_name": "com.example.santiye"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481885805166-m44i523hf823g2sdoj3sfbil8ck4spg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA06sgw2Vro2bvnJe5YRp7pWw50Q2PsKME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481885805166-m44i523hf823g2sdoj3sfbil8ck4spg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481885805166:android:98494808a842d7fa3b247f",
+        "android_client_info": {
+          "package_name": "com.example.santiye.main"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481885805166-m44i523hf823g2sdoj3sfbil8ck4spg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA06sgw2Vro2bvnJe5YRp7pWw50Q2PsKME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481885805166-m44i523hf823g2sdoj3sfbil8ck4spg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

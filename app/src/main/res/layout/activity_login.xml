@@ -59,10 +59,35 @@
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alan :"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/login_giris"
+        android:id="@+id/sginin"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Giriş" />
+
+    <Button
+        android:id="@+id/sginup"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="kayıt" />
 </LinearLayout>

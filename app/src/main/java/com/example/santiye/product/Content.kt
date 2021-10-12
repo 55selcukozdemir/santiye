@@ -5,5 +5,5 @@ class Content (val name: String,
                val location: String,
                val explanation: String,
                val personImage: Int,
-               val contentImage: Int,
+               val contentImage: String,
                val ticket:String)
