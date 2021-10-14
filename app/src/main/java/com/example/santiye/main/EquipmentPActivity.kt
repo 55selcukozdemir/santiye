@@ -1,49 +1,150 @@
 package com.example.santiye.main
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.akexorcist.snaptimepicker.SnapTimePickerDialog
 import com.example.santiye.R
 import com.example.santiye.adapter.MainEquipmentPRecyclerAdapter
 import com.example.santiye.databinding.FragmentEquipmentPBinding
 import com.example.santiye.product.EquipmentP
-import java.util.zip.Inflater
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class EquipmentPActivity : AppCompatActivity() {
 
     private lateinit var binding: FragmentEquipmentPBinding
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var piper: String
+    private lateinit var timeList: ArrayList<EquipmentP>
+    private lateinit var adapter: MainEquipmentPRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentEquipmentPBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
-
-
-
+        timeList = ArrayList<EquipmentP>()
+        firestore = Firebase.firestore
         val recyclerView = binding.fragmentEquipmentPRecyclerView
-
-        val equipmentpList = ArrayList<EquipmentP>()
-
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        equipmentpList.add(EquipmentP("12.12.21  15:15","12.12.21  16:15"))
-        equipmentpList.add(EquipmentP("12.12.21  15:15","12.12.21  16:15"))
-        equipmentpList.add(EquipmentP("12.12.21  15:15","12.12.21  16:15"))
-        equipmentpList.add(EquipmentP("12.12.21  15:15","12.12.21  16:15"))
+        piper = intent.getStringExtra("machineName") as String
 
-        val adapter = MainEquipmentPRecyclerAdapter(equipmentpList)
+        getdate()
+        getSpinner()
+
+        adapter = MainEquipmentPRecyclerAdapter(timeList)
         recyclerView.adapter = adapter
+
+        binding.machineAdd.setOnClickListener(View.OnClickListener {
+            val date1 = binding.date1.text.toString()
+            val date2 = binding.date2.text.toString()
+            val spinner1 = binding.spinner1.selectedItem
+            val spinner2 = binding.spinner2.selectedItem
+            val map = hashMapOf(
+                "date1" to date1,
+                "date2" to date2,
+                "spinner1" to spinner1,
+                "spinner2" to spinner2
+            )
+
+            firestore.collection(piper).add(map).addOnSuccessListener {
+                Toast.makeText(this, "İstekte bulunuldu.", Toast.LENGTH_LONG).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "İşlem hatası.", Toast.LENGTH_LONG).show()
+            }
+
+            getdate()
+        })
+
+        binding.date1.setOnClickListener {
+
+            val snapTime = SnapTimePickerDialog.Builder().setTitle(R.string.title_home)
+                .setThemeColor(R.color.purple_700)
+                .setPrefix(R.string.time_perfix)
+                .build()
+            snapTime.show(supportFragmentManager, SnapTimePickerDialog.TAG)
+
+            snapTime.setListener { hour, minute ->
+                binding.date1.text = "$hour:$minute"
+            }
+        }
+
+        binding.date2.setOnClickListener {
+
+            val snapTime = SnapTimePickerDialog.Builder().setTitle(R.string.title_home)
+                .setThemeColor(R.color.purple_700)
+                .setPrefix(R.string.time_perfix)
+                .build()
+            snapTime.show(supportFragmentManager, SnapTimePickerDialog.TAG)
+
+            snapTime.setListener { hour, minute ->
+                binding.date2.text = "$hour:$minute"
+            }
+        }
 
     }
 
+    fun getdate() {
+        firestore.collection(piper).get().addOnSuccessListener { documents ->
+            timeList.clear()
+            for (doc in documents) {
+                timeList.add(EquipmentP(doc.get("date1") as String, doc.get("date2") as String))
+            }
+
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    fun getSpinner() {
+
+        val spinner1 = ArrayList<String>()
+        firestore.collection( "floor").addSnapshotListener { value, error ->
+            if (error != null) {
+                Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
+            } else {
+                if (value != null) {
+                    if (!value.isEmpty) {
+                        val document = value.documents
+                        for (d in document) {
+                            spinner1.add(d.get("name") as String)
+                        }
+                        val spinner1Adapter = ArrayAdapter<String>(
+                            this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            spinner1
+                        )
+                        binding.spinner1.adapter = spinner1Adapter
+                    }
+                }
+            }
+        }
+
+        val spinner2 = ArrayList<String>()
+        firestore.collection("block").addSnapshotListener { value, error ->
+            if (error != null) {
+                Toast.makeText(this, error.localizedMessage, Toast.LENGTH_LONG).show()
+            } else {
+                if (value != null) {
+                    if (!value.isEmpty) {
+                        val document = value.documents
+                        for (d in document) {
+                            spinner2.add(d.get("name") as String)
+                        }
+                        val spinner2Adapter = ArrayAdapter<String>(
+                            this,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            spinner2
+                        )
+                        binding.spinner2.adapter = spinner2Adapter
+                    }
+                }
+            }
+        }
+    }
 }

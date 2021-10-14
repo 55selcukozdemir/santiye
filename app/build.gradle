@@ -61,4 +61,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.akexorcist:snap-time-picker:1.0.3'
 }

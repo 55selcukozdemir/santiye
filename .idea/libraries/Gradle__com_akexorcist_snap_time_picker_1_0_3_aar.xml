@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.akexorcist:snap-time-picker:1.0.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9dec4da999d92e8e4e9437959a28a350/transformed/jetified-snap-time-picker-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9dec4da999d92e8e4e9437959a28a350/transformed/jetified-snap-time-picker-1.0.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9dec4da999d92e8e4e9437959a28a350/transformed/jetified-snap-time-picker-1.0.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.akexorcist/snap-time-picker/1.0.3/97a8bf91971cef4f1f3d347383e675564665e197/snap-time-picker-1.0.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.akexorcist/snap-time-picker/1.0.3/e678c4d5762fb24b46629fbc68fc4170b462bbc7/snap-time-picker-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
