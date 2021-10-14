@@ -16,6 +16,7 @@ import com.example.santiye.databinding.FragmentMainHomeBinding
 import com.example.santiye.product.Content
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -95,7 +96,7 @@ class HomeFragment : Fragment() {
 
 
         contentList.clear()
-        firestore.collection("Posts").addSnapshotListener { value, error ->
+        firestore.collection("Posts").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
             if (error != null) {
                 Toast.makeText(context, error.localizedMessage, Toast.LENGTH_LONG).show()
             } else {

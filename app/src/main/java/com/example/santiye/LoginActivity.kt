@@ -46,13 +46,14 @@ class LoginActivity : AppCompatActivity() {
         ArrayAdapter.createFromResource(
             this,
             R.array.planets_array,
+
             android.R.layout.simple_spinner_dropdown_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
 
-        binding.sginup.setOnClickListener() {
+        binding.sginup.setOnClickListener(View.OnClickListener {
 
             val email = binding.loginEditTextEmail.text.toString()
             val pass = binding.loginEditTextPass.text.toString()
@@ -87,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
                 }
             }
-        }
+        })
 
 
         binding.sginin.setOnClickListener(View.OnClickListener {
@@ -121,6 +122,23 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        })
+
+
+
+        binding.ana.setOnClickListener(View.OnClickListener {
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
+        })
+
+        binding.warehome.setOnClickListener(View.OnClickListener {
+            val i = Intent(this, Warehome::class.java)
+            startActivity(i)
+        })
+
+        binding.operator.setOnClickListener(View.OnClickListener {
+            val i = Intent(this, Operator::class.java)
+            startActivity(i)
         })
     }
 }

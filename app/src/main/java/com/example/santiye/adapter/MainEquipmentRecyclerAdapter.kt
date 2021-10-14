@@ -16,6 +16,7 @@ import com.example.santiye.main.EquipmentPActivity
 import com.example.santiye.product.Content
 import com.example.santiye.product.Equipment
 import com.example.santiye.product.EquipmentP
+import com.squareup.picasso.Picasso
 
 class MainEquipmentRecyclerAdapter(val equipmentList: ArrayList<Equipment>, val context: Context): RecyclerView.Adapter<MainEquipmentRecyclerAdapter.EquipmentViewHolder>(){
 
@@ -29,6 +30,7 @@ class MainEquipmentRecyclerAdapter(val equipmentList: ArrayList<Equipment>, val 
 
         holder.layout.setOnClickListener(View.OnClickListener {
             val i = Intent(context, EquipmentPActivity::class.java)
+            i.putExtra("machineName", equipmentList[position].data1)
             context.startActivity(i)
         })
     }
@@ -44,7 +46,7 @@ class MainEquipmentRecyclerAdapter(val equipmentList: ArrayList<Equipment>, val 
         val layout = view.findViewById<CardView>(R.id.list_item_equipment_card_view)
 
         fun bintItem(equipmentModel: Equipment){
-            imageView.setImageResource(equipmentModel.image)
+            Picasso.get().load(equipmentModel.image).into(imageView)
             textDate1.text = equipmentModel.data1
             textDate2.text = equipmentModel.data2
         }

@@ -90,4 +90,22 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="kayıt" />
+
+    <Button
+        android:id="@+id/ana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ana" />
+
+    <Button
+        android:id="@+id/warehome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="depo" />
+
+    <Button
+        android:id="@+id/operator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="operator" />
 </LinearLayout>

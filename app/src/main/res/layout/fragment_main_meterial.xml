@@ -24,18 +24,14 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="right"
                 android:text="Malzeme:" />
 
-            <EditText
-                android:id="@+id/meterial_meterial_text"
-                android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/meterial_meterial_spinner"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Malzeme"
-                android:inputType="textPersonName" />
+                android:spinnerMode="dialog" />
 
         </LinearLayout>
 
@@ -73,19 +69,16 @@
                 android:gravity="right"
                 android:text="Blok:" />
 
-            <EditText
-                android:id="@+id/meterial_bolck_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="blok"
-                android:inputType="textPersonName" />
+            <Spinner
+                android:id="@+id/meterial_bolck_spinner"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -95,14 +88,10 @@
                 android:gravity="right"
                 android:text="Kat:" />
 
-            <EditText
-                android:id="@+id/meterial_floor_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="kat"
-                android:inputType="textPersonName" />
+            <Spinner
+                android:id="@+id/meterial_floor_spinner"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/button_request"

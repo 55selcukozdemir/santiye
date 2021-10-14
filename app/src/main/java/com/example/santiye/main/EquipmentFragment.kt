@@ -13,28 +13,40 @@ import com.example.santiye.R
 import com.example.santiye.adapter.MainEquipmentRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainEquipmentBinding
 import com.example.santiye.product.Equipment
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class EquipmentFragment : Fragment() {
 
     private lateinit var binding: FragmentMainEquipmentBinding
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View {
         binding = FragmentMainEquipmentBinding.inflate(inflater, container, false)
 
+        firestore = Firebase.firestore
+
         val recyclerView = binding.mainEquipmentRecyclerView
         val contentList = ArrayList<Equipment>()
-        contentList.add(Equipment(R.drawable.`in`,"12.10.21  15.15","12.10.21  16.15"))
-        contentList.add(Equipment(R.drawable.`in`,"12.10.21  15.15","12.10.21  16.15"))
-        contentList.add(Equipment(R.drawable.`in`,"12.10.21  15.15","12.10.21  16.15"))
-        contentList.add(Equipment(R.drawable.`in`,"12.10.21  15.15","12.10.21  16.15"))
-        contentList.add(Equipment(R.drawable.`in`,"12.10.21  15.15","12.10.21  16.15"))
 
-        recyclerView.layoutManager = LinearLayoutManager(inflater.context, LinearLayoutManager.VERTICAL,false)
 
-        val adapter = MainEquipmentRecyclerAdapter(contentList,inflater.context)
+        firestore.collection("machine").get().addOnSuccessListener {
+            for (doc in it){
+                contentList.add(Equipment(doc.get("imageUrl") as String, doc.get("name") as String, doc.get("name") as String))
+            }
+            recyclerView.layoutManager = LinearLayoutManager(inflater.context, LinearLayoutManager.VERTICAL,false)
+            val adapter = MainEquipmentRecyclerAdapter(contentList,inflater.context)
+            recyclerView.adapter = adapter
+        }.addOnFailureListener {
+            Toast.makeText(inflater.context, it.localizedMessage, Toast.LENGTH_LONG).show()
+        }
 
-        recyclerView.adapter = adapter
-        Toast.makeText(activity,"mesaj", Toast.LENGTH_LONG).show()
+
+
+
+
+//        Toast.makeText(activity,"mesaj", Toast.LENGTH_LONG).show()
 
 
 

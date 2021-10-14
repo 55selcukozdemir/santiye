@@ -23,6 +23,13 @@ class EquipmentPActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = FragmentEquipmentPBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
+
+
+
         val recyclerView = binding.fragmentEquipmentPRecyclerView
 
         val equipmentpList = ArrayList<EquipmentP>()
@@ -35,7 +42,6 @@ class EquipmentPActivity : AppCompatActivity() {
         equipmentpList.add(EquipmentP("12.12.21  15:15","12.12.21  16:15"))
 
         val adapter = MainEquipmentPRecyclerAdapter(equipmentpList)
-
         recyclerView.adapter = adapter
 
     }

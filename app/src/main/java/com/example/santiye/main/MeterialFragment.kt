@@ -1,15 +1,21 @@
 package com.example.santiye.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.santiye.R
 import com.example.santiye.adapter.MainMeterialRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainMeterialBinding
 import com.example.santiye.product.Meterial
+import com.example.santiye.warehome.SpinnerAdd
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -22,6 +28,8 @@ class MeterialFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentMeterial: ArrayList<Meterial>
     private lateinit var recyclerAdapter: MainMeterialRecyclerAdapter
+    private lateinit var spinnerList : ArrayList<String>
+    private  val TAG = "MeterialFragment"
 
 
     override fun onCreateView(
@@ -37,12 +45,15 @@ class MeterialFragment : Fragment() {
         firestore = Firebase.firestore
 
         getData()
+        getSpinner(inflater)
+
+
 
 
         binding.buttonRequest.setOnClickListener(View.OnClickListener {
-            val blok = binding.meterialBolckText.text.toString()
-            val floor = binding.meterialFloorText.text.toString()
-            val meterial = binding.meterialMeterialText.text.toString()
+            val blok = binding.meterialBolckSpinner.selectedItem
+            val floor = binding.meterialFloorSpinner.selectedItem
+            val meterial = binding.meterialMeterialSpinner.selectedItem
             val quentity = binding.meterialQuentityText.text.toString()
 
             val requestMap = hashMapOf<String, Any>()
@@ -103,4 +114,75 @@ class MeterialFragment : Fragment() {
             }
         }
     }
+
+    fun getSpinner (inflater: LayoutInflater) {
+
+        val meterialList = ArrayList<String>()
+        firestore.collection("product").addSnapshotListener{ value, error ->
+            if (error != null){
+                Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
+            }else{
+                if (value != null){
+                    if (!value.isEmpty){
+                        val document = value.documents
+                        for (d in document){
+                            meterialList.add(d.get("name") as String)
+                        }
+                        val meterialAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,meterialList)
+                        binding.meterialMeterialSpinner.adapter = meterialAdapter
+                    }
+                }
+            }
+        }
+
+
+
+        val blockList = ArrayList<String>()
+        firestore.collection("block").addSnapshotListener{ value, error ->
+            if (error != null){
+                Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
+            }else{
+                if (value != null){
+                    if (!value.isEmpty){
+                        val document = value.documents
+                        for (d in document){
+                            blockList.add(d.get("name") as String)
+
+                        }
+                        val blockAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,blockList)
+                        binding.meterialBolckSpinner.adapter = blockAdapter
+                    }
+                }
+            }
+        }
+
+
+        val floorList = ArrayList<String>()
+        firestore.collection("floor").addSnapshotListener{ value, error ->
+            if (error != null){
+                Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
+            }else{
+                if (value != null){
+                    if (!value.isEmpty){
+                        val document = value.documents
+                        for (d in document){
+                            floorList.add(d.get("name") as String)
+
+                        }
+                        val floorAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,floorList)
+                        binding.meterialFloorSpinner.adapter = floorAdapter
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+    }
+
+
+
 }
