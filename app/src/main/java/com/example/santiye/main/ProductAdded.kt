@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.santiye.adapter.CustomCheackBox
 import com.example.santiye.databinding.ActivityProductAddedBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
@@ -50,7 +51,10 @@ class ProductAdded : AppCompatActivity() {
         auth = Firebase.auth
         firestore = Firebase.firestore
         storage = Firebase.storage
+        val layout  = binding.categoryItems
 
+        val itemView = CustomCheackBox(this)
+        layout.addView(itemView.getView())
 
 
 
