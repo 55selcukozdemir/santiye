@@ -131,6 +131,10 @@ class HomeFragment : Fragment() {
         ticket: String
     ): ArrayList<Content> {
 
+
+
+
+
         newList.clear()
         for (x in oldList) {
             if (x.block == block && x.floor == floor && x.ticket == ticket)
