@@ -63,7 +63,6 @@ class CustomCheackBox {
 
                 val list = ArrayList<String>()
 
-
                 for(i in document.data.size downTo 1){
 
                     list.add(document.get(i.toString()) as String)

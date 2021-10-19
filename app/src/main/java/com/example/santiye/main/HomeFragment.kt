@@ -16,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -57,7 +59,10 @@ class HomeFragment : Fragment() {
         contentList = ArrayList<Content>()
 
         postGet()
+        customCheackBox = CustomCheackBox(inflater.context);
 
+
+//        val  list = contentListDesign(contentList, "duvar")
 
 
         adapter = MainHomeRecyclerAdapter(contentList)
@@ -75,8 +80,6 @@ class HomeFragment : Fragment() {
     }
 
 
-
-
     //Bottom sheet işlemleri burada
     fun dialogSheet(binding: FragmentMainHomeBinding, inflater: LayoutInflater) {
         val fab: View = binding.floatingActionButton3
@@ -89,7 +92,6 @@ class HomeFragment : Fragment() {
             layout = inflate.findViewById(R.id.linearLayout)
 
 
-            customCheackBox =  CustomCheackBox(inflate.context);
 
             view = customCheackBox.getView()
             layout.addView(view)
@@ -97,7 +99,7 @@ class HomeFragment : Fragment() {
 
             buttonAdd = inflate.findViewById<Button>(R.id.addedButton2)
             buttonAdd.setOnClickListener(View.OnClickListener {
-                for (i in customCheackBox.getSpinner()){
+                for (i in customCheackBox.getSpinner()) {
                     spinnerList.add(i.selectedItem as String)
                 }
             })
@@ -111,41 +113,54 @@ class HomeFragment : Fragment() {
             dialog.setCancelable(false)
             dialog.setContentView(inflate)
             dialog.show()
-            var  list = contentListDesign(contentList, "duvar")
+
         }
     }
 
 
-
-
     // Ana sayfa da görünecek olan içeriklerin sıralanmsı.
-    fun contentListDesign(list: ArrayList<Content>, item: String): ArrayList<Content> {
+    fun contentListDesign(
+        list: ArrayList<Content>,
+//        floor: String,
+//        block: String,
+//        ticket: String
+    ): ArrayList<Content> {
 
 
-        val TAG = customCheackBox.getDocument()
+        val baslıklar = customCheackBox.getDocument()
 
-        for(t in TAG){
-            for(liste in list){
-                if(t == liste.contentImage)
+        val listContent1 = ArrayList<Content>()
+        for (t in baslıklar) {
+            for (liste in list) {
+                if (t == liste.contentImage) {
+                    listContent1.add(liste)
+                }
             }
         }
 
 
         // ArrayList her elemenı için değrlendirme yapılıyor
-        val listt = ArrayList<Content>()
+        val list1 = ArrayList<Content>()
 
         for (x in list) {
-            if (x.name == item || x.location == item) {
-                listt.add(x)
-            }
+//            if (x.name.lowercase().contains(item)) {
+//                list1.add(x)
+//            }
         }
-        return listt
+
+
+        val list2 = ArrayList<Content>()
+        for (x in list1) {
+//          /  if(x.)
+        }
+
+
+        return list1
     }
 
     private fun postGet() {
-
         contentList.clear()
-        firestore.collection("Posts").orderBy("date", Query.Direction.DESCENDING)
+        firestore.collection("posts").orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
                 if (error != null) {
                     Toast.makeText(context, error.localizedMessage, Toast.LENGTH_LONG).show()
@@ -154,19 +169,34 @@ class HomeFragment : Fragment() {
                     if (value != null) {
                         if (!value.isEmpty) {
                             val document = value.documents
-
                             for (d in document) {
+                                val email = d.get("email") as String
+                                val floor = d.get("floor") as String
+                                val block = d.get("block") as String
+                                val contentImage = d.get("contentImage") as String
+                                val explanation = d.get("explanation") as String
+                                val ticket = d.get("ticket") as String
 
-                                val comment = d.get("comment") as String
-                                val downloadImage = d.get("downloadUrl") as String
-                                val content = Content("boş","boş","boş",comment,R.drawable.`in`,downloadImage,"boş")
+                                //zamanı ekrana yazırmak için yapılan işlemeler
+                                val timestamp = d["date"] as com.google.firebase.Timestamp
+                                val milliseconds =
+                                    timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                                val sdf = SimpleDateFormat("MM/dd/yyyy")
+                                val netDate = Date(milliseconds)
+                                val date = sdf.format(netDate).toString()
+
+                                val content = Content(
+                                    email,
+                                    floor,
+                                    block,
+                                    contentImage,
+                                    explanation,
+                                    ticket,
+                                    date
+                                )
                                 contentList.add(content)
                             }
-
-
-
                             adapter.notifyDataSetChanged()
-
                         }
                     }
                 }

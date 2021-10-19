@@ -8,11 +8,9 @@
 
     <Button
         android:id="@+id/main_home_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/main_home_recyler_view"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_home_recyler_view"

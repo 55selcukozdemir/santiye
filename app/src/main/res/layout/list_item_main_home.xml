@@ -65,18 +65,18 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/main_home_text_view_ticket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Etiketler" />
-
-        <TextView
             android:id="@+id/main_home_text_view_explanation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="Açıklama" />
+
+        <TextView
+            android:id="@+id/main_home_text_view_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Etiketler" />
 
 
     </LinearLayout>
