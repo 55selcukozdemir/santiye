@@ -1,7 +1,6 @@
 package com.example.santiye.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -20,14 +19,12 @@ import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.log
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentMainHomeBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentList: ArrayList<Content>
-    private lateinit var newList: ArrayList<Content>
 
 
     private lateinit var adapter: MainHomeRecyclerAdapter
@@ -58,7 +55,6 @@ class HomeFragment : Fragment() {
         Toast.makeText(context, "çalışıyor", Toast.LENGTH_LONG).show()
 
         contentList = ArrayList<Content>()
-        newList = ArrayList()
         postGet()
 
         adapter = MainHomeRecyclerAdapter(contentList)
@@ -132,13 +128,21 @@ class HomeFragment : Fragment() {
     ): ArrayList<Content> {
 
 
-
-
-
-        newList.clear()
-        for (x in oldList) {
-            if (x.block == block && x.floor == floor && x.ticket == ticket)
-            {
+        val floorList = ArrayList<Content>()
+        for (x in oldList){
+            if(x.floor == floor || floor == "sec"){
+                floorList.add(x)
+            }
+        }
+        val blockList = ArrayList<Content>()
+        for (x in floorList){
+            if(x.block == block || block == "sec"){
+                blockList.add(x)
+            }
+        }
+        val newList = ArrayList<Content>()
+        for (x in blockList){
+            if (x.ticket == ticket || ticket == "sec"){
                 newList.add(x)
             }
         }
