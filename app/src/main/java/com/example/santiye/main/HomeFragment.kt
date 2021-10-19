@@ -6,8 +6,9 @@ import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.santiye.R
-import com.example.santiye.adapter.CustomCheackBox
+import com.example.santiye.adapter.CustomSpinner
 import com.example.santiye.adapter.MainHomeRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainHomeBinding
 import com.example.santiye.product.Content
@@ -19,25 +20,26 @@ import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.log
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentMainHomeBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentList: ArrayList<Content>
+    private lateinit var newList: ArrayList<Content>
 
 
     private lateinit var adapter: MainHomeRecyclerAdapter
     private val TAG = "HomeFragment"
 
-    private lateinit var buttonAdd: Button
     private lateinit var layout: LinearLayout
-    private lateinit var spinnerList: ArrayList<String>
 
-    private lateinit var customCheackBox: CustomCheackBox
+    private lateinit var customSpinner: CustomSpinner
 
 
     private lateinit var view: LinearLayout
+    private lateinit var recyclerView: RecyclerView
 
 
     override fun onCreateView(
@@ -48,25 +50,23 @@ class HomeFragment : Fragment() {
         binding = FragmentMainHomeBinding.inflate(inflater, container, false)
         firestore = Firebase.firestore
 
-        val recyclerView = binding.mainHomeRecylerView
+        recyclerView = binding.mainHomeRecylerView
         dialogSheet(binding, inflater)
         recyclerView.layoutManager =
             LinearLayoutManager(inflater.context, LinearLayoutManager.VERTICAL, false)
 
         Toast.makeText(context, "çalışıyor", Toast.LENGTH_LONG).show()
 
-        spinnerList = ArrayList()
         contentList = ArrayList<Content>()
-
+        newList = ArrayList()
         postGet()
-        customCheackBox = CustomCheackBox(inflater.context);
-
-
-//        val  list = contentListDesign(contentList, "duvar")
-
 
         adapter = MainHomeRecyclerAdapter(contentList)
+
         recyclerView.adapter = adapter
+
+
+
         return binding.root
 
 
@@ -92,21 +92,26 @@ class HomeFragment : Fragment() {
             layout = inflate.findViewById(R.id.linearLayout)
 
 
+            customSpinner = CustomSpinner(inflater.context);
 
-            view = customCheackBox.getView()
+            view = customSpinner.getView()
             layout.addView(view)
 
 
-            buttonAdd = inflate.findViewById<Button>(R.id.addedButton2)
-            buttonAdd.setOnClickListener(View.OnClickListener {
-                for (i in customCheackBox.getSpinner()) {
-                    spinnerList.add(i.selectedItem as String)
-                }
-            })
+
+
 
 
             buttonDisms.setOnClickListener(View.OnClickListener {
                 dialog.dismiss()
+                val newList = contentListDesign(
+                    contentList,
+                    customSpinner.getSpinner().get(2).selectedItem.toString(), //floor
+                    customSpinner.getSpinner().get(0).selectedItem.toString(), //block
+                    customSpinner.getSpinner().get(1).selectedItem.toString() //ticket
+                )
+                adapter = MainHomeRecyclerAdapter(newList)
+                recyclerView.adapter = adapter
             })
 
 
@@ -120,42 +125,20 @@ class HomeFragment : Fragment() {
 
     // Ana sayfa da görünecek olan içeriklerin sıralanmsı.
     fun contentListDesign(
-        list: ArrayList<Content>,
-//        floor: String,
-//        block: String,
-//        ticket: String
+        oldList: ArrayList<Content>,
+        floor: String,
+        block: String,
+        ticket: String
     ): ArrayList<Content> {
 
-
-        val baslıklar = customCheackBox.getDocument()
-
-        val listContent1 = ArrayList<Content>()
-        for (t in baslıklar) {
-            for (liste in list) {
-                if (t == liste.contentImage) {
-                    listContent1.add(liste)
-                }
+        newList.clear()
+        for (x in oldList) {
+            if (x.block == block && x.floor == floor && x.ticket == ticket)
+            {
+                newList.add(x)
             }
         }
-
-
-        // ArrayList her elemenı için değrlendirme yapılıyor
-        val list1 = ArrayList<Content>()
-
-        for (x in list) {
-//            if (x.name.lowercase().contains(item)) {
-//                list1.add(x)
-//            }
-        }
-
-
-        val list2 = ArrayList<Content>()
-        for (x in list1) {
-//          /  if(x.)
-        }
-
-
-        return list1
+        return newList
     }
 
     private fun postGet() {

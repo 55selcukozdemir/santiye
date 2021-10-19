@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class CustomCheackBox {
+class CustomSpinner {
     private var context:Context
     private var firestore: FirebaseFirestore
     private var view: LinearLayout
@@ -62,6 +62,7 @@ class CustomCheackBox {
                 categoryTagName.add(document.id)
 
                 val list = ArrayList<String>()
+                list.add("sec")
 
                 for(i in document.data.size downTo 1){
 

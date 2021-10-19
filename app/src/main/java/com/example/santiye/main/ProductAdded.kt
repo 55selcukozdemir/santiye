@@ -1,13 +1,11 @@
 package com.example.santiye.main
 
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
@@ -15,7 +13,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.santiye.adapter.CustomCheackBox
+import com.example.santiye.adapter.CustomSpinner
 import com.example.santiye.databinding.ActivityProductAddedBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp
@@ -53,7 +51,7 @@ class ProductAdded : AppCompatActivity() {
         storage = Firebase.storage
         val layout  = binding.categoryItems
 
-        val itemView = CustomCheackBox(this)
+        val itemView = CustomSpinner(this)
         layout.addView(itemView.getView())
 
 
@@ -97,12 +95,12 @@ class ProductAdded : AppCompatActivity() {
 
                         if (true){
                             val postMap = hashMapOf<String, Any>()
-                            postMap.put("downloadUrl", downloadUrl)
+                            postMap.put("downloadUrl", itemView.getSpinner()[1].selectedItem)
                             //postMap.put("userEmail", auth.currentUser!!.email!!)
                             postMap.put("comment", binding.editTextTextPersonName3.text.toString())
                             postMap.put("date", Timestamp.now())
 
-                            firestore.collection("Posts").add(postMap).addOnSuccessListener{
+                            firestore.collection("posts").add(postMap).addOnSuccessListener{
 
                                 finish()
                             }.addOnFailureListener{
