@@ -32,7 +32,7 @@ class WarehomeRequestRecyclerAdapter (val requestList: ArrayList<RequestL>) : Re
         holder.bindItem(requestList[position])
 
         holder.noButton.setOnClickListener(View.OnClickListener {
-            val collection = firestore.collection("Request")
+            val collection = firestore.collection("request")
             collection.document(requestList[position].id).update("confirmation", "true")
         })
 

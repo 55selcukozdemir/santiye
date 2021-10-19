@@ -95,9 +95,15 @@ class ProductAdded : AppCompatActivity() {
 
                         if (true){
                             val postMap = hashMapOf<String, Any>()
-                            postMap.put("downloadUrl", itemView.getSpinner()[1].selectedItem)
+                            postMap.put("contentImage", downloadUrl)
+                            postMap.put("block", itemView.getSpinner()[0].selectedItem)
+                            postMap.put("floor", itemView.getSpinner()[2].selectedItem)
+                            postMap.put("ticket", itemView.getSpinner()[1].selectedItem)
+
+                            postMap.put("email", "w@mail.com")
+
                             //postMap.put("userEmail", auth.currentUser!!.email!!)
-                            postMap.put("comment", binding.editTextTextPersonName3.text.toString())
+                            postMap.put("explanation", binding.editTextTextPersonName3.text.toString())
                             postMap.put("date", Timestamp.now())
 
                             firestore.collection("posts").add(postMap).addOnSuccessListener{

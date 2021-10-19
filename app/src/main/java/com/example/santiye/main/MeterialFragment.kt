@@ -64,7 +64,7 @@ class MeterialFragment : Fragment() {
             requestMap.put("confirmation", "null")
             requestMap.put("date", Timestamp.now())
 
-            firestore.collection("Request").add(requestMap).addOnSuccessListener {
+            firestore.collection("request").add(requestMap).addOnSuccessListener {
                 Toast.makeText(context, "İstekte bulunuldu!", Toast.LENGTH_LONG).show()
             }.addOnFailureListener {
                 Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
@@ -84,7 +84,7 @@ class MeterialFragment : Fragment() {
 
     fun getData(){
 
-        firestore.collection("Request").addSnapshotListener { value, error ->
+        firestore.collection("request").addSnapshotListener { value, error ->
 
             contentMeterial.clear()
             if (error != null){

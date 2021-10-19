@@ -11,7 +11,9 @@ import com.example.santiye.R
 import com.example.santiye.adapter.MainEquipmentPRecyclerAdapter
 import com.example.santiye.databinding.FragmentEquipmentPBinding
 import com.example.santiye.product.EquipmentP
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -50,7 +52,8 @@ class EquipmentPActivity : AppCompatActivity() {
                 "date1" to date1,
                 "date2" to date2,
                 "spinner1" to spinner1,
-                "spinner2" to spinner2
+                "spinner2" to spinner2,
+                "data" to Timestamp.now()
             )
 
             firestore.collection(piper).add(map).addOnSuccessListener {
@@ -91,7 +94,7 @@ class EquipmentPActivity : AppCompatActivity() {
     }
 
     fun getdate() {
-        firestore.collection(piper).get().addOnSuccessListener { documents ->
+        firestore.collection(piper).orderBy("data", Query.Direction.DESCENDING).get().addOnSuccessListener { documents ->
             timeList.clear()
             for (doc in documents) {
                 timeList.add(EquipmentP(doc.get("date1") as String, doc.get("date2") as String))

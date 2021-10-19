@@ -13,6 +13,7 @@ import com.example.santiye.databinding.FragmentRequestBinding
 import com.example.santiye.product.Content
 import com.example.santiye.product.RequestL
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -43,7 +44,7 @@ class RequestFragment : Fragment() {
     fun addRequest(){
 
 //        .whereEqualTo("confirmation","null")
-        firestore.collection("Request").addSnapshotListener { value, error ->
+        firestore.collection("request").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
             requestList.clear()
             if (error != null){
                 Toast.makeText(context, error.localizedMessage, Toast.LENGTH_LONG).show()

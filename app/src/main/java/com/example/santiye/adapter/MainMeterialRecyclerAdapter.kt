@@ -3,6 +3,7 @@ package com.example.santiye.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.santiye.R
@@ -29,14 +30,21 @@ class MainMeterialRecyclerAdapter(val contentList: ArrayList<Meterial>): Recycle
         val floor = view.findViewById<TextView>(R.id.list_item_main_products_floor)
         val block = view.findViewById<TextView>(R.id.list_item_main_products_block)
         val quentity = view.findViewById<TextView>(R.id.list_item_main_products_quentity)
-        val confirmation = view.findViewById<TextView>(R.id.list_item_main_products_confirmation)
+        val confirmationImage = view.findViewById<ImageView>(R.id.image_view)
 
         fun bindItem(contentModel: Meterial){
             meterial.text = contentModel.meterial
             floor.text = contentModel.floor
             block.text = contentModel.blok
             quentity.text = contentModel.quentity
-            confirmation.text = contentModel.confirmation
+
+            if (contentModel.confirmation == "true"){
+                confirmationImage.setImageResource(R.drawable.check)
+            }else if(contentModel.confirmation == "false"){
+                confirmationImage.setImageResource(R.drawable.cancel)
+            }else{
+                confirmationImage.setImageResource(R.drawable.search)
+            }
         }
     }
 }
