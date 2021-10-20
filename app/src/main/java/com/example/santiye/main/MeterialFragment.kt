@@ -1,26 +1,21 @@
 package com.example.santiye.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.santiye.R
 import com.example.santiye.adapter.MainMeterialRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainMeterialBinding
 import com.example.santiye.product.Meterial
-import com.example.santiye.warehome.SpinnerAdd
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 
 class MeterialFragment : Fragment() {
 
@@ -28,8 +23,6 @@ class MeterialFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentMeterial: ArrayList<Meterial>
     private lateinit var recyclerAdapter: MainMeterialRecyclerAdapter
-    private lateinit var spinnerList : ArrayList<String>
-    private  val TAG = "MeterialFragment"
 
 
     override fun onCreateView(
@@ -40,15 +33,12 @@ class MeterialFragment : Fragment() {
         binding = FragmentMainMeterialBinding.inflate(inflater, container, false)
 
         val recyclerView1 = binding.fragmentMainMeterialRecyclerView
-        contentMeterial = ArrayList()
 
+        contentMeterial = ArrayList()
         firestore = Firebase.firestore
 
         getData()
         getSpinner(inflater)
-
-
-
 
         binding.buttonRequest.setOnClickListener(View.OnClickListener {
             val blok = binding.meterialBolckSpinner.selectedItem
@@ -78,57 +68,66 @@ class MeterialFragment : Fragment() {
         recyclerView1.adapter = recyclerAdapter
 
         return binding.root
-
-
     }
 
-    fun getData(){
+    fun getData() {
 
-        firestore.collection("request").addSnapshotListener { value, error ->
+        firestore.collection("request").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
 
             contentMeterial.clear()
-            if (error != null){
-                Toast.makeText(context, error.localizedMessage,Toast.LENGTH_LONG).show()
-            }else{
+            if (error != null) {
+                Toast.makeText(context, error.localizedMessage, Toast.LENGTH_LONG).show()
+            } else {
 
-                if (value != null){
+                if (value != null) {
 
-                    if (!value.isEmpty){
+                    if (!value.isEmpty) {
 
                         val doc = value.documents
-                        for (d in doc){
+                        for (d in doc) {
                             val confirmation = d.get("confirmation").toString()
 
-                                val block = d.get("block") as String
-                                val floor = d.get("floor") as String
-                                val meterial = d.get("meteral") as String
-                                val quentity = d.get("quentity") as String
-                                val id = d.id
-                                contentMeterial.add(Meterial(block,floor,meterial,quentity,confirmation, id))
-
+                            val block = d.get("block") as String
+                            val floor = d.get("floor") as String
+                            val meterial = d.get("meteral") as String
+                            val quentity = d.get("quentity") as String
+                            val id = d.id
+                            contentMeterial.add(
+                                Meterial(
+                                    block,
+                                    floor,
+                                    meterial,
+                                    quentity,
+                                    confirmation,
+                                    id
+                                )
+                            )
                         }
                         recyclerAdapter.notifyDataSetChanged()
-
                     }
                 }
             }
         }
     }
 
-    fun getSpinner (inflater: LayoutInflater) {
+    fun getSpinner(inflater: LayoutInflater) {
 
         val meterialList = ArrayList<String>()
-        firestore.collection("product").addSnapshotListener{ value, error ->
-            if (error != null){
+        firestore.collection("product").addSnapshotListener { value, error ->
+            if (error != null) {
                 Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
-            }else{
-                if (value != null){
-                    if (!value.isEmpty){
+            } else {
+                if (value != null) {
+                    if (!value.isEmpty) {
                         val document = value.documents
-                        for (d in document){
+                        for (d in document) {
                             meterialList.add(d.get("name") as String)
                         }
-                        val meterialAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,meterialList)
+                        val meterialAdapter = ArrayAdapter<String>(
+                            inflater.context,
+                            android.R.layout.simple_spinner_dropdown_item,
+                            meterialList
+                        )
                         binding.meterialMeterialSpinner.adapter = meterialAdapter
                     }
                 }
@@ -136,53 +135,31 @@ class MeterialFragment : Fragment() {
         }
 
 
-
         val blockList = ArrayList<String>()
-        firestore.collection("block").addSnapshotListener{ value, error ->
-            if (error != null){
-                Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
-            }else{
-                if (value != null){
-                    if (!value.isEmpty){
-                        val document = value.documents
-                        for (d in document){
-                            blockList.add(d.get("name") as String)
-
-                        }
-                        val blockAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,blockList)
-                        binding.meterialBolckSpinner.adapter = blockAdapter
-                    }
-                }
+        firestore.collection("category").document("block").get().addOnSuccessListener { it ->
+            for (i in it.data!!.size downTo 1) {
+                blockList.add(it.get(i.toString()) as String)
             }
+            val blockAdapter = ArrayAdapter<String>(
+                inflater.context,
+                android.R.layout.simple_spinner_dropdown_item,
+                blockList
+            )
+            binding.meterialBolckSpinner.adapter = blockAdapter
         }
 
 
         val floorList = ArrayList<String>()
-        firestore.collection("floor").addSnapshotListener{ value, error ->
-            if (error != null){
-                Toast.makeText(inflater.context, error.localizedMessage, Toast.LENGTH_LONG).show()
-            }else{
-                if (value != null){
-                    if (!value.isEmpty){
-                        val document = value.documents
-                        for (d in document){
-                            floorList.add(d.get("name") as String)
-
-                        }
-                        val floorAdapter = ArrayAdapter<String>(inflater.context,android.R.layout.simple_spinner_dropdown_item,floorList)
-                        binding.meterialFloorSpinner.adapter = floorAdapter
-                    }
-                }
+        firestore.collection("category").document("floor").get().addOnSuccessListener { it ->
+            for (i in it.data!!.size downTo 1) {
+                floorList.add(it.get(i.toString()) as String)
             }
+            val floorAdapter = ArrayAdapter<String>(
+                inflater.context,
+                android.R.layout.simple_spinner_dropdown_item,
+                floorList
+            )
+            binding.meterialFloorSpinner.adapter = floorAdapter
         }
-
-
-
-
-
-
     }
-
-
-
 }

@@ -33,12 +33,17 @@ class WarehomeRequestRecyclerAdapter (val requestList: ArrayList<RequestL>) : Re
 
         holder.noButton.setOnClickListener(View.OnClickListener {
             val collection = firestore.collection("request")
-            collection.document(requestList[position].id).update("confirmation", "true")
+            collection.document(requestList[position].id).update("confirmation", "false").addOnSuccessListener {
+
+            }
         })
 
         holder.okButton.setOnClickListener(View.OnClickListener {
-            val  collection = firestore.collection("Request")
-            collection.document(requestList[position].id).update("confirmation", "false")
+            val  collection = firestore.collection("request")
+            collection.document(requestList[position].id).update("confirmation", "true").addOnSuccessListener {
+
+            }
+
         })
     }
 

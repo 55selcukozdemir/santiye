@@ -42,15 +42,8 @@ class Operator : AppCompatActivity() {
 
 
         getWork()
-
-
-
         adapter = OperatorRecyclerView(dutyList, this)
         recyclerView.adapter = adapter
-
-
-
-
 
         setContentView(binding.root)
 
@@ -65,7 +58,7 @@ class Operator : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == R.id.r_menü) {
-
+            getWork()
             adapter = OperatorRecyclerView(dutyList, this)
             recyclerView.adapter = adapter
         }
@@ -77,9 +70,12 @@ class Operator : AppCompatActivity() {
 
         var email = "deneme@bekoloader"
         firestore.collection("machine").get().addOnSuccessListener {
+
+            dutyList.clear()
             for (doc in it){
                 if (doc.get("email") as String == email){
                     val name =  doc.get("name") as String
+
 
                     firestore.collection(name).orderBy("data", Query.Direction.DESCENDING).get().addOnSuccessListener {
 
@@ -87,14 +83,11 @@ class Operator : AppCompatActivity() {
                             dutyList.add(OperatorDuty("${docd.get("date2") as String}, ${docd.get("date2") as String}", docd.get("date1") as String, docd.get("date2") as String, docd.id,doc.get("name") as String))
 
                         }
-
-
-
+                        adapter.notifyDataSetChanged()
                     }
 
                 }
             }
-            adapter.notifyDataSetChanged()
         }
     }
 }
