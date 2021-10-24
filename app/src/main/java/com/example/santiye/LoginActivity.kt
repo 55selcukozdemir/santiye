@@ -41,54 +41,44 @@ class LoginActivity : AppCompatActivity() {
 //            finish()
 //         }
 
-        val spinner = binding.spinner
 
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.planets_array,
-
-            android.R.layout.simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-
-        binding.sginup.setOnClickListener(View.OnClickListener {
-
-            val email = binding.loginEditTextEmail.text.toString()
-            val pass = binding.loginEditTextPass.text.toString()
-            val postion = spinner.selectedItem
-
-            if (email.equals("") || pass.equals("")) {
-                Toast.makeText(this, "Email Ve şifre kısmı boş bırakılamaz!", Toast.LENGTH_LONG)
-                    .show()
-            } else {
-                auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
-
-                    val userFeatures = hashMapOf("email" to email, "position" to postion)
-                    firestore.collection("Users").add(userFeatures).addOnSuccessListener {
-
-                        Log.d(TAG, "onCreate: kayıt yönlendirme $postion")
-                        if (postion == "depo") {
-                            val i = Intent(this, Warehome::class.java)
-                            startActivity(i)
-                            finish()
-                        } else if (postion == "operaror") {
-                            val i = Intent(this, Operator::class.java)
-                            startActivity(i)
-                            finish()
-                        } else if (postion == "ana") {
-                            val i = Intent(this, MainActivity::class.java)
-                            startActivity(i)
-                            finish()
-                        }
-                    }
-                }.addOnFailureListener {
-
-                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
-                }
-            }
-        })
+//
+//        binding.sginup.setOnClickListener(View.OnClickListener {
+//
+//            val email = binding.loginEditTextEmail.text.toString()
+//            val pass = binding.loginEditTextPass.text.toString()
+//
+//
+//            if (email.equals("") || pass.equals("")) {
+//                Toast.makeText(this, "Email Ve şifre kısmı boş bırakılamaz!", Toast.LENGTH_LONG)
+//                    .show()
+//            } else {
+//                auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
+//
+//                    val userFeatures = hashMapOf("email" to email, "position" to postion)
+//                    firestore.collection("Users").add(userFeatures).addOnSuccessListener {
+//
+//                        Log.d(TAG, "onCreate: kayıt yönlendirme $postion")
+//                        if (postion == "depo") {
+//                            val i = Intent(this, Warehome::class.java)
+//                            startActivity(i)
+//                            finish()
+//                        } else if (postion == "operaror") {
+//                            val i = Intent(this, Operator::class.java)
+//                            startActivity(i)
+//                            finish()
+//                        } else if (postion == "ana") {
+//                            val i = Intent(this, MainActivity::class.java)
+//                            startActivity(i)
+//                            finish()
+//                        }
+//                    }
+//                }.addOnFailureListener {
+//
+//                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        })
 
 
         binding.sginin.setOnClickListener(View.OnClickListener {
@@ -100,8 +90,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
 
                 auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener {
-
-                    firestore.collection("Users").get().addOnSuccessListener { result ->
+                    firestore.collection("users").get().addOnSuccessListener { result ->
                         for (documnet in result) {
                             if ((documnet.get("email") as String) == email) {
                                 if (documnet.get("position") == "depo") {
@@ -124,21 +113,5 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-
-
-        binding.ana.setOnClickListener(View.OnClickListener {
-            val i = Intent(this, MainActivity::class.java)
-            startActivity(i)
-        })
-
-        binding.warehome.setOnClickListener(View.OnClickListener {
-            val i = Intent(this, Warehome::class.java)
-            startActivity(i)
-        })
-
-        binding.operator.setOnClickListener(View.OnClickListener {
-            val i = Intent(this, Operator::class.java)
-            startActivity(i)
-        })
     }
 }

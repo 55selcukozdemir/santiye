@@ -44,20 +44,25 @@ class MeterialFragment : Fragment() {
             val blok = binding.meterialBolckSpinner.selectedItem
             val floor = binding.meterialFloorSpinner.selectedItem
             val meterial = binding.meterialMeterialSpinner.selectedItem
-            val quentity = binding.meterialQuentityText.text.toString()
+            val quentity = binding.meterialQuentityText.text
 
             val requestMap = hashMapOf<String, Any>()
             requestMap.put("block", blok)
             requestMap.put("floor", floor)
             requestMap.put("meteral", meterial)
-            requestMap.put("quentity", quentity)
+            requestMap.put("quentity", quentity.toString())
             requestMap.put("confirmation", "null")
             requestMap.put("date", Timestamp.now())
 
-            firestore.collection("request").add(requestMap).addOnSuccessListener {
-                Toast.makeText(context, "İstekte bulunuldu!", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
+            if (quentity.isNotEmpty()){
+                firestore.collection("request").add(requestMap).addOnSuccessListener {
+                    Toast.makeText(context, "İstekte bulunuldu!", Toast.LENGTH_LONG).show()
+                }.addOnFailureListener {
+                    Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
+                }
+                quentity.clear()
+            }else{
+                Toast.makeText(inflater.context, "Lütfen miktar kısmını boş bırakmayınız!", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -121,7 +126,7 @@ class MeterialFragment : Fragment() {
                     if (!value.isEmpty) {
                         val document = value.documents
                         for (d in document) {
-                            meterialList.add(d.get("name") as String)
+                            meterialList.add(d.get("name") as String + " ("+ d.get("unit") as String +": " +d.get("size") as String + ")")
                         }
                         val meterialAdapter = ArrayAdapter<String>(
                             inflater.context,

@@ -24,14 +24,14 @@ class ProductArrangementFragment : Fragment() {
         firestore = Firebase.firestore
 
         binding.arragametAddButtn.setOnClickListener(View.OnClickListener {
-            val productName = binding.arrangametName.text.toString()
-            val productAdded = binding.arrangametProductAdd.text.toString()
-            val productUnit = binding.arrangametUnit.text.toString()
+            val productName = binding.arrangametName.text
+            val productAdded = binding.arrangametProductAdd.text
+            val productUnit = binding.arrangametUnit.text
 
             val productMap = hashMapOf<String, Any>()
-            productMap.put("name", productName)
-            productMap.put("size", productAdded)
-            productMap.put("unit", productUnit)
+            productMap.put("name", productName.toString())
+            productMap.put("size", productAdded.toString())
+            productMap.put("unit", productUnit.toString())
             productMap.put("date", Timestamp.now())
 
             firestore.collection("product").add(productMap).addOnSuccessListener {
@@ -40,6 +40,9 @@ class ProductArrangementFragment : Fragment() {
                 Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
             }
 
+            productName.clear()
+            productAdded.clear()
+            productUnit.clear()
 
 
 
