@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.santiye.R
+import com.example.santiye.LoginActivity
 import com.example.santiye.adapter.MainHomeRecyclerAdapter
 import com.example.santiye.databinding.FragmentMainProfileBinding
 import com.example.santiye.product.Content
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -23,6 +25,7 @@ class Profile : Fragment() {
 
     private lateinit var binding: FragmentMainProfileBinding
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
     private lateinit var email: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -31,6 +34,7 @@ class Profile : Fragment() {
         val recyclerView = binding.fragmentMainProfileRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
         firestore = Firebase.firestore
+        auth = Firebase.auth
         email = "w@mail.com"
         getProfile()
 
@@ -57,10 +61,17 @@ class Profile : Fragment() {
             recyclerView.adapter = adapter
         }
 
-        binding.button3.setOnClickListener(View.OnClickListener {
+        binding.workadd.setOnClickListener(View.OnClickListener {
             val i = Intent(activity,ProductAdded::class.java)
             startActivity(i)
         })
+
+        binding.logOut.setOnClickListener{
+            auth.signOut()
+            val i = Intent(activity, LoginActivity::class.java)
+            startActivity(i)
+            activity?.finish()
+        }
 
         return binding.root
     }

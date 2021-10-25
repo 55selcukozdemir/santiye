@@ -6,8 +6,12 @@
         <entry key="..\:/Users/SELCUK/.gradle/caches/transforms-3/c96ed00f7a5353f16a09d8ac0b47488c/transformed/jetified-play-services-base-17.1.0/res/drawable/common_google_signin_btn_icon_dark_focused.xml" value="0.2703125" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/border.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/border1.xml" value="0.184375" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/button_background.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/cancel.xml" value="0.26927083333333335" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/image_back.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/layout_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/refrash.xml" value="0.26927083333333335" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/search.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/textview_backgroud.xml" value="1.6" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/drawable/theme.xml" value="0.26927083333333335" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/activity_login.xml" value="0.264" />
@@ -28,7 +32,7 @@
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/fragment_request.xml" value="0.264" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_equipment.xml" value="0.1" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_equipment_p.xml" value="0.264" />
-        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_home.xml" value="0.4" />
+        <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_home.xml" value="0.3783783783783784" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_main_meterial.xml" value="0.4290657439446367" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_operator.xml" value="0.264" />
         <entry key="..\:/Users/SELCUK/Desktop/app/santiye/app/src/main/res/layout/list_item_warehome_products.xml" value="0.2" />

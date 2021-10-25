@@ -62,4 +62,6 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.akexorcist:snap-time-picker:1.0.3'
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
+
 }

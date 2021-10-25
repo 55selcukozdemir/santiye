@@ -48,21 +48,25 @@ class EquipmentPActivity : AppCompatActivity() {
             val date2 = binding.date2.text.toString()
             val spinner1 = binding.spinner1.selectedItem
             val spinner2 = binding.spinner2.selectedItem
-            val map = hashMapOf(
-                "date1" to date1,
-                "date2" to date2,
-                "spinner1" to spinner1,
-                "spinner2" to spinner2,
-                "data" to Timestamp.now()
-            )
+           if(date2 != "Bitiş zamanı" || date1 != "Başlangıç zamanı"){
+               val map = hashMapOf(
+                   "date1" to date1,
+                   "date2" to date2,
+                   "spinner1" to spinner1,
+                   "spinner2" to spinner2,
+                   "data" to Timestamp.now()
+               )
 
-            firestore.collection(piper).add(map).addOnSuccessListener {
-                Toast.makeText(this, "İstekte bulunuldu.", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                Toast.makeText(this, "İşlem hatası.", Toast.LENGTH_LONG).show()
-            }
+               firestore.collection(piper).add(map).addOnSuccessListener {
+                   Toast.makeText(this, "İstekte bulunuldu.", Toast.LENGTH_SHORT).show()
+               }.addOnFailureListener {
+                   Toast.makeText(this, "İşlem hatası.", Toast.LENGTH_SHORT).show()
+               }
 
-            getdate()
+               getdate()
+           }else{
+               Toast.makeText(this, "Lütfen boş bir zaman dilimi seçiniz.", Toast.LENGTH_SHORT).show()
+           }
         })
 
         binding.date1.setOnClickListener {

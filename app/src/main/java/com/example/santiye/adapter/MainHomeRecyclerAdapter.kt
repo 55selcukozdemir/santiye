@@ -54,8 +54,8 @@ class MainHomeRecyclerAdapter(val contentList: ArrayList<Content>) : RecyclerVie
         val contentImage: ImageView = view.findViewById(R.id.main_home_image_view_content)
 
         fun bindItem(contentModel: Content){
-            location.text = (contentModel.block + " " + contentModel.floor + " " + contentModel.date)
-            ticket.text = contentModel.ticket
+            location.text = (contentModel.date)
+            ticket.text = ("#" + contentModel.ticket + " #" +  contentModel.block + " #" + contentModel.floor )
             explanation.text = contentModel.explanation
         }
 

@@ -1,5 +1,6 @@
 package com.example.santiye
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,8 +19,11 @@ import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
+
+    val PREFS_FILENAME = "com.ekremh.prefs"
+    val MAIL = "MAIL"
+    val DUTY = "DUTY"
     private lateinit var binding: ActivityLoginBinding
-    private val TAG: String = "deneme"
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var postArrayList: ArrayList<Users>
@@ -27,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
 
         auth = Firebase.auth
         firestore = Firebase.firestore
@@ -35,51 +39,33 @@ class LoginActivity : AppCompatActivity() {
         postArrayList = ArrayList<Users>()
 
 
-//        if(curretUser != null ){
-//         val i = Intent(this, Warehome::class.java)
-//           startActivity(i)
-//            finish()
-//         }
+        val prefences = getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+        val editor = prefences.edit()
 
 
-//
-//        binding.sginup.setOnClickListener(View.OnClickListener {
-//
-//            val email = binding.loginEditTextEmail.text.toString()
-//            val pass = binding.loginEditTextPass.text.toString()
-//
-//
-//            if (email.equals("") || pass.equals("")) {
-//                Toast.makeText(this, "Email Ve şifre kısmı boş bırakılamaz!", Toast.LENGTH_LONG)
-//                    .show()
-//            } else {
-//                auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
-//
-//                    val userFeatures = hashMapOf("email" to email, "position" to postion)
-//                    firestore.collection("Users").add(userFeatures).addOnSuccessListener {
-//
-//                        Log.d(TAG, "onCreate: kayıt yönlendirme $postion")
-//                        if (postion == "depo") {
-//                            val i = Intent(this, Warehome::class.java)
-//                            startActivity(i)
-//                            finish()
-//                        } else if (postion == "operaror") {
-//                            val i = Intent(this, Operator::class.java)
-//                            startActivity(i)
-//                            finish()
-//                        } else if (postion == "ana") {
-//                            val i = Intent(this, MainActivity::class.java)
-//                            startActivity(i)
-//                            finish()
-//                        }
-//                    }
-//                }.addOnFailureListener {
-//
-//                    Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        })
+        // Kullanıcı kontorlü var mı? yok mu?
 
+        if(curretUser != null ){
+
+            if (prefences.getString(MAIL, "mail") == curretUser.email) {
+
+                if (prefences.getString(DUTY, "duty") == "depo") {
+                    val i = Intent(this, Warehome::class.java)
+                    startActivity(i)
+                    finish()
+                } else if (prefences.getString(DUTY, "duty") == "operaror") {
+                    val i = Intent(this, Operator::class.java)
+                    startActivity(i)
+                    finish()
+                } else if (prefences.getString(DUTY, "duty") == "ana") {
+                    val i = Intent(this, MainActivity::class.java)
+                    startActivity(i)
+                    finish()
+                }
+            }
+        }else{
+            setContentView(binding.root)
+        }
 
         binding.sginin.setOnClickListener(View.OnClickListener {
             val email = binding.loginEditTextEmail.text.toString()
@@ -93,17 +79,25 @@ class LoginActivity : AppCompatActivity() {
                     firestore.collection("users").get().addOnSuccessListener { result ->
                         for (documnet in result) {
                             if ((documnet.get("email") as String) == email) {
+                                editor.putString(MAIL, documnet.get("email") as String)
                                 if (documnet.get("position") == "depo") {
                                     val i = Intent(this, Warehome::class.java)
                                     startActivity(i)
+                                    editor.putString(DUTY, "depo")
+                                    editor.apply()
+
                                     finish()
                                 } else if (documnet.get("position") == "operaror") {
                                     val i = Intent(this, Operator::class.java)
                                     startActivity(i)
+                                    editor.putString(DUTY, "operaror")
+                                    editor.apply()
                                     finish()
                                 } else if (documnet.get("position") == "ana") {
                                     val i = Intent(this, MainActivity::class.java)
                                     startActivity(i)
+                                    editor.putString(DUTY, "ana")
+                                    editor.apply()
                                     finish()
                                 }
                             }

@@ -25,16 +25,9 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentMainHomeBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentList: ArrayList<Content>
-
-
     private lateinit var adapter: MainHomeRecyclerAdapter
-    private val TAG = "HomeFragment"
-
     private lateinit var layout: LinearLayout
-
     private lateinit var customSpinner: CustomSpinner
-
-
     private lateinit var view: LinearLayout
     private lateinit var recyclerView: RecyclerView
 
@@ -52,7 +45,6 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(inflater.context, LinearLayoutManager.VERTICAL, false)
 
-        Toast.makeText(context, "çalışıyor", Toast.LENGTH_LONG).show()
 
         contentList = ArrayList<Content>()
         postGet()
@@ -129,20 +121,20 @@ class HomeFragment : Fragment() {
 
 
         val floorList = ArrayList<Content>()
-        for (x in oldList){
-            if(x.floor == floor || floor == "sec"){
+        for (x in oldList) {
+            if (x.floor == floor || floor == "Seçim yap") {
                 floorList.add(x)
             }
         }
         val blockList = ArrayList<Content>()
-        for (x in floorList){
-            if(x.block == block || block == "sec"){
+        for (x in floorList) {
+            if (x.block == block || block == "Seçim yap") {
                 blockList.add(x)
             }
         }
         val newList = ArrayList<Content>()
-        for (x in blockList){
-            if (x.ticket == ticket || ticket == "sec"){
+        for (x in blockList) {
+            if (x.ticket == ticket || ticket == "Seçim yap") {
                 newList.add(x)
             }
         }

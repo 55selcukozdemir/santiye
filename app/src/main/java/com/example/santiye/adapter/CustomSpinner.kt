@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.*
 import com.example.santiye.R
 import com.google.common.math.LinearTransformation
 import com.google.firebase.firestore.FirebaseFirestore
@@ -44,6 +46,8 @@ class CustomSpinner {
                 var layout = LinearLayout(context)
                 layout.orientation = LinearLayout.VERTICAL
                 val drawable = ResourcesCompat.getDrawable(context.resources, R.drawable.layout_background, null)
+                val par = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+                par.setMargins(10,10,10,10)
                 layout.background = drawable
                 // LinearLayout oluşturlması (son)
 
@@ -62,17 +66,10 @@ class CustomSpinner {
                 categoryTagName.add(document.id)
 
                 val list = ArrayList<String>()
-                list.add("sec")
+                list.add("Seçim yap")
 
                 for(i in document.data.size downTo 1){
-
                     list.add(document.get(i.toString()) as String)
-
-//                    val checkBox = CheckBox(context)
-//                    checkBox.gravity = CheckBox.TEXT_ALIGNMENT_GRAVITY
-//                    checkBox.text = document.get(i.toString()).toString()
-//                    layout.addView(checkBox)
-
                 }
 
 
@@ -84,7 +81,7 @@ class CustomSpinner {
 
                 spinnerList.add(spinner)
                 layout.addView(spinner)
-                view.addView(layout)
+                view.addView(layout , par)
             }
         }
     }
@@ -94,11 +91,5 @@ class CustomSpinner {
     }
     fun getSpinner(): ArrayList<Spinner>{
         return this.spinnerList
-    }
-    fun getSpinnerSize(): Int{
-        return this.spinnerList.size
-    }
-    fun getDocument(): ArrayList<String>{
-        return this.categoryTagName
     }
 }

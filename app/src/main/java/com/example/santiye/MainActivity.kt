@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navView: BottomNavigationView
-    private  val TAG = "MainActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         )
 
 
+
+        supportActionBar?.hide()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -41,7 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
     }
+
 
 
 
