@@ -4,33 +4,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="center"-->
+<!--        android:background="@drawable/base_border"-->
+<!--        android:padding="3dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp"  >-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="250dp"-->
+<!--            android:padding="5dp"-->
+<!--            android:src="@drawable/loader" />-->
+
+<!--        <TextView-->
+<!--            android:padding="5dp"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="iş makinası" />-->
+<!--    </LinearLayout>-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:padding="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="Başlagıç zamanı :"
+                android:text="Başlagıç Zamanı"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/date1"
+                android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/primaryLightColor"
+                android:background="@drawable/base_border"
                 android:backgroundTintMode="add"
                 android:hapticFeedbackEnabled="false"
                 android:text="Başlangıç zamanı" />
@@ -44,37 +69,37 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="0dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="Bitiş zamanı :"
+                android:text="Bitiş Zamanı"
                 android:textSize="16sp" />
 
             <Button
+                android:layout_margin="5dp"
                 android:id="@+id/date2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/primaryLightColor"
+                android:background="@drawable/base_border"
                 android:text="Bitiş zamanı" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Blok seç" />
+                android:text="Blok Seç " />
 
             <Spinner
                 android:id="@+id/spinner1"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/base_border"/>
 
         </LinearLayout>
 
@@ -82,29 +107,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Kat seç" />
+                android:text="Kat Seç" />
 
             <Spinner
                 android:id="@+id/spinner2"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/base_border"/>
 
         </LinearLayout>
 
         <Button
             android:id="@+id/machine_add"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/primaryColor"
-            android:text="İsek" />
+            android:layout_marginTop="9dp"
+            android:background="@drawable/base_border"
+            android:text="Talep Et" />
 
     </LinearLayout>
 
@@ -112,8 +139,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Önceki isteklerim" />
+        android:text="Daha Önceki Taleplerim" />
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Zaman Aralığı" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Konum" />
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_equipment_p_recycler_view"
         android:layout_width="match_parent"

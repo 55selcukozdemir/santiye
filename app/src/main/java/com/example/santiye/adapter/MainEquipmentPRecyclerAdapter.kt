@@ -28,8 +28,8 @@ class MainEquipmentPRecyclerAdapter(val equipmentList: ArrayList<EquipmentP>): R
         val textData2 = view.findViewById<TextView>(R.id.list_item_equipment_p_text_view_date2)
 
         fun bindItem(equipmentModel: EquipmentP){
-            textData1.text = equipmentModel.date1
-            textData2.text = equipmentModel.date2
+            textData1.text = (equipmentModel.date1 + " / " + equipmentModel.date2)
+            textData2.text = equipmentModel.konum
         }
     }
 

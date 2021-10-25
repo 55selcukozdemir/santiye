@@ -42,6 +42,7 @@ class EquipmentPActivity : AppCompatActivity() {
 
         adapter = MainEquipmentPRecyclerAdapter(timeList)
         recyclerView.adapter = adapter
+        supportActionBar?.hide()
 
         binding.machineAdd.setOnClickListener(View.OnClickListener {
             val date1 = binding.date1.text.toString()
@@ -101,7 +102,7 @@ class EquipmentPActivity : AppCompatActivity() {
         firestore.collection(piper).orderBy("data", Query.Direction.DESCENDING).get().addOnSuccessListener { documents ->
             timeList.clear()
             for (doc in documents) {
-                timeList.add(EquipmentP(doc.get("date1") as String, doc.get("date2") as String))
+                timeList.add(EquipmentP(doc.get("date1") as String, doc.get("date2") as String, doc.get("spinner1") as String + "/" + doc.get("spinner2") as String))
             }
 
             adapter.notifyDataSetChanged()
