@@ -27,16 +27,15 @@ class MainMeterialRecyclerAdapter(val contentList: ArrayList<Meterial>): Recycle
 
     class MeterialViewHoler(view: View): RecyclerView.ViewHolder(view){
         val meterial  = view.findViewById<TextView>(R.id.list_item_main_products_meterial)
-        val floor = view.findViewById<TextView>(R.id.list_item_main_products_floor)
-        val block = view.findViewById<TextView>(R.id.list_item_main_products_block)
-        val quentity = view.findViewById<TextView>(R.id.list_item_main_products_quentity)
+        val location = view.findViewById<TextView>(R.id.list_item_main_products_location)
         val confirmationImage = view.findViewById<ImageView>(R.id.image_view)
+        val request = view.findViewById<TextView>(R.id.list_item_main_products_request_unit)
 
         fun bindItem(contentModel: Meterial){
             meterial.text = contentModel.meterial
-            floor.text = contentModel.floor
-            block.text = contentModel.blok
-            quentity.text = contentModel.quentity
+            location.text = (contentModel.blok  + "/" + contentModel.floor)
+            request.text = contentModel.quentity
+
 
             if (contentModel.confirmation == "true"){
                 confirmationImage.setImageResource(R.drawable.check)

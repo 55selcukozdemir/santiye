@@ -9,28 +9,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingRight="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Malzeme İsteğinde Bulun" />
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Malzeme İsteğinde Bulun"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
                 android:text="Malzeme:" />
 
             <Spinner
                 android:id="@+id/meterial_meterial_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/base_border"
                 android:spinnerMode="dialog" />
 
         </LinearLayout>
@@ -38,78 +46,120 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:paddingLeft="10dp"
                 android:text="Miktar:" />
 
             <EditText
                 android:id="@+id/meterial_quentity_text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/base_border"
                 android:ems="10"
-                android:hint="miktar"
-                android:inputType="textPersonName|numberDecimal" />
+                android:inputType="textPersonName|numberDecimal"
+                android:paddingLeft="10dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
                 android:text="Blok:" />
 
             <Spinner
                 android:id="@+id/meterial_bolck_spinner"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/base_border" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
                 android:text="Kat:" />
 
             <Spinner
                 android:id="@+id/meterial_floor_spinner"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/button_request"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="İstek" />
-        </LinearLayout>
-    </LinearLayout>
+                android:background="@drawable/base_border" />
 
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/base_border"
+            android:text="Talep Et" />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Önceki İsteklerim" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Malzeme"/>
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Miktar"/>
+
+        <TextView
+            android:paddingLeft="20dp"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Konum"/>
+        <TextView
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Durum"/>
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_main_meterial_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

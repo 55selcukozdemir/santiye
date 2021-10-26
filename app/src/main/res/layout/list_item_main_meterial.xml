@@ -2,7 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/base_border">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,36 +14,30 @@
 
         <TextView
             android:id="@+id/list_item_main_products_meterial"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="meterial " />
 
         <TextView
-            android:id="@+id/list_item_main_products_floor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="kat" />
-
-        <TextView
-            android:id="@+id/list_item_main_products_block"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="blok" />
-
-        <TextView
-            android:id="@+id/list_item_main_products_quentity"
-            android:layout_width="wrap_content"
+            android:id="@+id/list_item_main_products_request_unit"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="miktar" />
+
+        <TextView
+            android:id="@+id/list_item_main_products_location"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="konum" />
 
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_baseline_check_24" />
 

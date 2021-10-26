@@ -37,6 +37,7 @@ class EquipmentPActivity : AppCompatActivity() {
 
         piper = intent.getStringExtra("machineName") as String
 
+        binding.makineName.text = piper
         getdate()
         getSpinner()
 

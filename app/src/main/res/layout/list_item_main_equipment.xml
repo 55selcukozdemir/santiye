@@ -4,44 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_item_equipment_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="25dp"
+    android:background="@drawable/base_border">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/list_item_equipment_image_view"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/list_item_equipment_text_view_date1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Bugün: 15:00 15:30"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="En Yakın Tarihler" />
-
-            <TextView
-                android:id="@+id/list_item_equipment_text_view_date1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Bugün: 15:00 15:30" />
-
-            <TextView
-                android:id="@+id/list_item_equipment_text_view_date2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Bugün: 17:00 17:30" />
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

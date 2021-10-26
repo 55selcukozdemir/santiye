@@ -6,27 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".main.ProductAdded">
 
+
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/profile"
+        tools:srcCompat="@drawable/profile" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/base_border"
         android:ems="10"
+        android:gravity="start"
         android:hint="Yorum Ekle"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine|textPersonName"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />

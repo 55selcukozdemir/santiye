@@ -33,7 +33,7 @@ class EquipmentFragment : Fragment() {
 
         firestore.collection("machine").get().addOnSuccessListener {
             for (doc in it){
-                contentList.add(Equipment(doc.get("imageUrl") as String, doc.get("name") as String, doc.get("name") as String))
+                contentList.add(Equipment(doc.get("imageUrl") as String, doc.get("name") as String))
             }
             recyclerView.layoutManager = LinearLayoutManager(inflater.context, LinearLayoutManager.VERTICAL,false)
             val adapter = MainEquipmentRecyclerAdapter(contentList,inflater.context)
