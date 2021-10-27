@@ -10,4 +10,5 @@
         android:width="1dp"
         android:color="@color/primaryLightColor"
         />
+    <corners android:radius="15dp"/>
 </shape>

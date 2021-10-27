@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="units">
+        <item>adet</item>
+        <item>kg</item>
+        <item>paket</item>
+        <item>koli</item>
+        <item>litre</item>
+        <item>palet</item>
+        <item>torba</item>
+    </string-array>
+</resources>

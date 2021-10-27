@@ -23,6 +23,8 @@ class MeterialFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var contentMeterial: ArrayList<Meterial>
     private lateinit var recyclerAdapter: MainMeterialRecyclerAdapter
+    private lateinit var meterialName: ArrayList<String>
+
 
 
     override fun onCreateView(
@@ -44,12 +46,13 @@ class MeterialFragment : Fragment() {
             val blok = binding.meterialBolckSpinner.selectedItem
             val floor = binding.meterialFloorSpinner.selectedItem
             val meterial = binding.meterialMeterialSpinner.selectedItem
+            val meterialPosition = binding.meterialMeterialSpinner.selectedItemPosition
             val quentity = binding.meterialQuentityText.text
 
             val requestMap = hashMapOf<String, Any>()
             requestMap.put("block", blok)
             requestMap.put("floor", floor)
-            requestMap.put("meteral", meterial)
+            requestMap.put("meteral",meterialName.get(meterialPosition))
             requestMap.put("quentity", quentity.toString())
             requestMap.put("confirmation", "null")
             requestMap.put("date", Timestamp.now())
@@ -117,6 +120,7 @@ class MeterialFragment : Fragment() {
 
     fun getSpinner(inflater: LayoutInflater) {
 
+        meterialName = ArrayList<String>()
         val meterialList = ArrayList<String>()
         firestore.collection("product").addSnapshotListener { value, error ->
             if (error != null) {
@@ -127,6 +131,7 @@ class MeterialFragment : Fragment() {
                         val document = value.documents
                         for (d in document) {
                             meterialList.add(d.get("name") as String + " ("+ d.get("unit") as String +": " +d.get("size") as String + ")")
+                            meterialName.add(d.get("name") as String)
                         }
                         val meterialAdapter = ArrayAdapter<String>(
                             inflater.context,

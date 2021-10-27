@@ -8,66 +8,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@drawable/base_border"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp">
+
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ürün Adı " />
+            android:gravity="center"
+            android:text="Ürün Adı "
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/arrangamet_name"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:background="@drawable/base_border"
             android:ems="10"
-            android:hint="Ürün adı giriniz..."
-            android:inputType="textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:hint="Ürün adı giriniz."
+            android:inputType="textPersonName"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Eklenen Ürün Adet" />
+            android:gravity="center"
+            android:text="Eklenen Ürün Adet"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/arrangamet_product_add"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:background="@drawable/base_border"
             android:ems="10"
-            android:hint="Eklenen adeti giriniz..."
-            android:inputType="number|textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:hint="Eklenen adeti giriniz."
+            android:inputType="number|textPersonName"
+            android:padding="10dp" />
 
         <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Birimi" />
-
-        <EditText
-            android:id="@+id/arrangamet_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Birimi belirtiniz..."
-            android:inputType="textPersonName" />
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="Birimi"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/base_border"
+            android:padding="10dp" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/arragamet_add_buttn"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:background="@drawable/base_border"
         android:text="ekle" />
 </LinearLayout>

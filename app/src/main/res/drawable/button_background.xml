@@ -39,7 +39,7 @@
 
 
                     <gradient
-                        android:endColor="@color/primaryLightColor"
+                        android:endColor="@color/secondaryLightColor"
                         android:startColor="@color/primaryColor"
                         />
 
