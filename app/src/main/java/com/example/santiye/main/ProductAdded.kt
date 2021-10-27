@@ -45,6 +45,7 @@ class ProductAdded : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductAddedBinding.inflate(layoutInflater)
 
+        supportActionBar?.hide()
         registerLauncher()
         auth = Firebase.auth
         firestore = Firebase.firestore
@@ -119,6 +120,8 @@ class ProductAdded : AppCompatActivity() {
                 }.addOnFailureListener{
                     Toast.makeText(this, it.localizedMessage,Toast.LENGTH_LONG).show()
                 }
+            }else{
+                Toast.makeText(this, "Lütfen bir görsel seçerek yükleme yapınız.", Toast.LENGTH_SHORT).show()
             }
 
         })

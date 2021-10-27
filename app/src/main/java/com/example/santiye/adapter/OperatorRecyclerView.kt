@@ -1,7 +1,6 @@
 package com.example.santiye.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import com.google.firebase.ktx.Firebase
 
 class OperatorRecyclerView(val duty: ArrayList<OperatorDuty>, val context: Context): RecyclerView.Adapter<OperatorRecyclerView.HolderViewOperator>() {
 
-    private  val TAG = "OperatorRecyclerView"
     private lateinit var firestore: FirebaseFirestore
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderViewOperator {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_operator,parent,false)
@@ -39,15 +37,13 @@ class OperatorRecyclerView(val duty: ArrayList<OperatorDuty>, val context: Conte
 
     class HolderViewOperator(view: View) : RecyclerView.ViewHolder(view){
 
-        val textLocation = view.findViewById<TextView>(R.id.list_item_operator_location)
-        val textdate1 = view.findViewById<TextView>(R.id.list_item_operator_date1)
-        val textdate2 = view.findViewById<TextView>(R.id.list_item_operator_date2)
+        val location = view.findViewById<TextView>(R.id.list_item_operator_location)
+        val date = view.findViewById<TextView>(R.id.list_item_operator_date)
         val okButton = view.findViewById<Button>(R.id.list_item_operator_button_ok)
 
         fun bindItem(dutyModel: OperatorDuty){
-            textLocation.text = dutyModel.location
-            textdate1.text = dutyModel.date1
-            textdate2.text = dutyModel.date2
+            location.text = dutyModel.location
+            date.text = (dutyModel.date1 + " - " + dutyModel.date2)
         }
 
     }

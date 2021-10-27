@@ -1,39 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal">
+    android:layout_margin="10dp"
+    android:background="@drawable/layout_background"
+    android:backgroundTintMode="src_in"
+    android:padding="10dp"
+    app:cardBackgroundColor="#00FFFFFF"
+    app:cardCornerRadius="15dp">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:background="#00FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-        <TextView
-            android:id="@+id/list_item_operator_location"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="konum" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/list_item_operator_date1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="09.10.2021  17:00" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="İş Zaman Aralığı"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/list_item_operator_date2"
-            android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/list_item_operator_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="zaman"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Konum"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/list_item_operator_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Konum"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/list_item_operator_button_ok"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="09.10.2021  17:00" />
+            android:background="@drawable/base_border"
+            android:text="Tamamlandı" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/list_item_operator_button_ok"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Tamamlandı" />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -7,4 +7,7 @@
         android:title="yenile"
         app:showAsAction="always"
         android:id="@+id/r_menü"/>
+    <item
+        android:id="@+id/log_out_operator"
+        android:title="Çıkış yap"/>
 </menu>
